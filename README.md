@@ -9,3 +9,6 @@ Sheetsu lets you use Google Sheets as the database. Sheetsu has javascript lib t
 Youtube link: 
 www.youtube.com/results?search_query=use+sheetsu+with+javascript
 
+Instagram login page template: 
+https://www.instagram.com/accounts/login/?hl=en
+
