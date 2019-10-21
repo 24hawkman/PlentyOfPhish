@@ -12,3 +12,9 @@ https://www.youtube.com/watch?v=KdO9P8FnVN4
 Instagram login page template: 
 https://www.instagram.com/accounts/login/?hl=en
 
+My form link: 
+https://docs.google.com/forms/d/e/1FAIpQLSf0rNCWw1sbsVpM3mg-yx8c2EZ-DqMP7vwTKGMSnvV0bPJH2w/viewform
+
+My sheets link (database): 
+https://docs.google.com/spreadsheets/d/1AWcYJunnufHZI087lDlxzJXtkBbxMfkW3Cqm9MfVkhE/edit?usp=sharing
+
