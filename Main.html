@@ -77,16 +77,9 @@
 <center><h1 style="color:#fff">wanTED Tutorial: Post HTML Form Data to Google Spreadsheet in 2 Minutes</h1></center>
 
 <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off"> 
-    <input id="nameField" name="entry.2008660880" placeholder="Enter your name" type="text" required> 
-    <input id="emailField" name="entry.1460631936" placeholder="Enter your email" type="email" required> 
-    <input id="mobField" name="entry.904964149" placeholder="Enter your 10 Digit Phone Number" type="text" pattern="^\d{10}$" required>  
-    <select id="cinema" name="entry.1878256062" placeholder="Select Cinema" required>
-        <option value="">Why wanTED Talks Youtube Channel?</option>
-        <option value="City: Delhi, Cinema: PVR Logix City Centre IMAX, Noida">Time Saving Fast Track Tutorials</option>
-        <option value="City: Bengaluru  Cinema:Cinepolis IMAX Forum Shantiniketan">Provide Code for reference</option>
-        <option value="City: Chennai Cinema:SPI Palazo The Forum Vijaya Mall, Vadapalani">Instant Replies of Comments</option>
-        <option value="City: Pune Cinema:Cinepolis Westend Mall, Pune">Latest Code Updates</option> 
-    </select> 
+    <input id="nameField" name="entry.366340186" placeholder="Enter your name" type="text" required> 
+    <input id="emailField" name="entry.147812173" placeholder="Enter your email" type="text" required> 
+     
     <button id="send" type="submit" class="common_btn">Register Now</button>
 </form>
 
@@ -104,9 +97,8 @@
 function postToGoogle() {
                 var field1 = $("#nameField").val();
                 var field2 = $("#emailField").val();
-                var field3 = $("#mobField").val();
-                var field4 = $("#cinema option:selected").text();
- 				
+                
+
 				if(field1 == ""){
 					alert('Please Fill Your Name');
 					document.getElementById("nameField").focus();
@@ -117,16 +109,12 @@ function postToGoogle() {
 					document.getElementById("emailField").focus();
 					return false;
 				}
-				if(field3 == "" || field3.length > 10 || field3.length < 10){
-					alert('Please Fill Your Mobile Number');
-					document.getElementById("mobField").focus();
-					return false;
-				}
+				
 
 
               $.ajax({
-                      url: "https://docs.google.com/forms/d/e/1FAIpQLSfwwr_thxplsWYLLkeH1KiyId5KKvTDSfNnzPd3HTJm0Ee-lg/formResponse?",
-                      data: {"entry.2008660880": field1, "entry.1460631936": field2, "entry.904964149": field3, "entry.1878256062": field4},
+                      url: "https://docs.google.com/forms/d/e/1FAIpQLSf0rNCWw1sbsVpM3mg-yx8c2EZ-DqMP7vwTKGMSnvV0bPJH2w/formResponse?",
+                      data: {"entry.366340186": field1, "entry.147812173": field2},
                       type: "POST",
                       dataType: "xml",
                       success: function(d)
