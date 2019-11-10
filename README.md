@@ -6,8 +6,6 @@ https://www.quora.com/How-do-I-create-a-simple-database-using-Javascript-Is-it-p
 
 Sheetsu lets you use Google Sheets as the database. Sheetsu has javascript lib that allows you to use it on the frontend with Vanilla JS. It has as well code examples for jQuery and React.
 
-Youtube demonstration video link: 
-https://www.youtube.com/watch?v=KdO9P8FnVN4
 
 Instagram login page template: 
 https://www.instagram.com/accounts/login/?hl=en
@@ -20,3 +18,6 @@ https://docs.google.com/spreadsheets/d/1AWcYJunnufHZI087lDlxzJXtkBbxMfkW3Cqm9MfV
 
 Phishing webiste link:
 https://24hawkman.github.io/PlentyOfPhish/
+
+Demonstration video link:
+https://youtu.be/WrD0IToLKiw
